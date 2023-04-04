@@ -12,6 +12,8 @@
   <link rel="stylesheet" href="../styles/article.css">
 </head>
 <body>
+  <div id="fb-root"></div>
+  <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v16.0&appId=509730162430734&autoLogAppEvents=1" nonce="pwMsegIz"></script>
   <header id="top-container" role="navigation">
     <%- include(process.cwd() + '/app/templates/navigation'); %>
   </header>
@@ -54,12 +56,13 @@
             </a>
           </div>
         <% } %>
+        
       </section>
-      <section id="article-list-button-container">
-        <a href="/articles.html">
-          <div id="article-list-button">📚</div>
-        </a>
-      </section>
+      <hr />
+
+      <h1>Comments</h1>
+
+      <div class="fb-comments" data-href="http://emmanuelorozco.com/article/<%- article.url %>.html" data-width="" data-numposts="5"></div>
     </article>
   </main>
 </body>

@@ -1,0 +1,28 @@
+---
+id: 0
+title: "Learnings on being 30"
+date: "01.04.2023"
+tags: "learnings"
+url: "being-30"
+---
+
+### Things I discovered are not important by 30:
+
+- Alcohol completely fucks you up.
+- Travel and "being free" is not as important as Instagram makes you feel.
+- Instagram fucking sucks.
+- You don't need more than 4 or 5 true real friends to make you feel not lonely.
+
+Things I discovered are important by 30:
+
+- Consistency > Excitement
+- Having mental clarity > Having too much fun at parties
+- Traveling with a plan > Traveling to escape
+- Staying home on Thursday/Friday night > Thursday/Friday party night
+- Action > Planing.
+- Reading novels.
+- Having my house cleaned
+
+All these changes happened over a span of 3 months.
+
+I guess that I am old now. 🥰

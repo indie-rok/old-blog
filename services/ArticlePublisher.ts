@@ -32,7 +32,7 @@ class ArticlePublisher {
   // A path of the article template file.
   static ARTICLE_TEMPLATE: Buffer = fs.readFileSync(path.join(__dirname, '../app/templates/article.ejs'));
 
-  static IGNORED_FILES: string[] = ['.DS_Store'];
+  static IGNORED_FILES: string[] = ['.DS_Store', 'lorem-ipsum-2.md.draft', '.draft'];
 
   static md: MarkdownIt = new MarkdownIt({
     html: false,
@@ -99,8 +99,7 @@ class ArticlePublisher {
    */
   private static getArticleByFilename(filename: string) {
     const mdContent = String(fs.readFileSync(`${this.ARTICLE_ORIGIN_PATH}/${filename}`));
-    const mdContentWithToc = `::: toggle(Table of Contents)\n[[toc]]\n:::\n${mdContent}`;
-    const htmlContent: string = this.md.render(this.extractContent(mdContentWithToc));
+    const htmlContent: string = this.md.render(this.extractContent(mdContent));
     const metaInfo: ArticleMetaInfo = this.extractMetaInfo(String(mdContent));
 
     return new Article({
@@ -109,6 +108,7 @@ class ArticlePublisher {
       subtitle: metaInfo.getSubtitle(),
       date: metaInfo.getDate(),
       tags: metaInfo.getTags(),
+      url: metaInfo.getUrl(),
       content: htmlContent,
     });
   }
@@ -169,11 +169,12 @@ class ArticlePublisher {
         if (article.id === id) {
           console.log(`* ${article.id}: ${article.title}`);
           fs.writeFileSync(
-            `${this.ARTICLE_DIST_PATH}/${article.id}.html`,
+            `${this.ARTICLE_DIST_PATH}/${article.url}.html`,
             ejs.render(String(this.ARTICLE_TEMPLATE), {
               article,
               nextArticle,
               prevArticle,
+              url: `${this.ARTICLE_DIST_PATH}/${article.url}.html`,
             }),
           );
         }
@@ -182,11 +183,12 @@ class ArticlePublisher {
       }
 
       fs.writeFileSync(
-        `${this.ARTICLE_DIST_PATH}/${article.id}.html`,
+        `${this.ARTICLE_DIST_PATH}/${article.url}.html`,
         ejs.render(String(this.ARTICLE_TEMPLATE), {
           article,
           nextArticle,
           prevArticle,
+          url: `${this.ARTICLE_DIST_PATH}/${article.url}.html`,
         }),
       );
 
